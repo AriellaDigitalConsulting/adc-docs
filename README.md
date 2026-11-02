@@ -1,0 +1,18 @@
+# ADC Docs
+
+Documentation for Ariella Digital Consulting widgets, built with Astro and Starlight. Pages are Markdown files in
+`src/content/docs/docs/`, and the sidebar is defined in `astro.config.mjs`.
+
+```bash
+npm install
+npm run dev
+npm run build
+```
+
+The content was migrated once from LumApps with `scripts/import.mjs`. Rerunning it overwrites manual edits.
+
+The assistant is `@arielladigitalconsulting/adc-ask`, currently installed from `vendor/` so builds need no registry
+token. To use GitHub Packages, allow this repository under the package's Manage Actions access settings, then install
+the published version.
+
+To move to `docs.adc.dev`, remove `SITE_URL` and `SITE_BASE` from the deploy workflow, add `public/CNAME`, and change DNS.

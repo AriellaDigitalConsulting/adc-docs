@@ -1,0 +1,22 @@
+:root {
+  --sl-font: 'Open Sans', system-ui, sans-serif;
+  --sl-color-accent-low: #1a1940;
+  --sl-color-accent: #6f68ff;
+  --sl-color-accent-high: #c9c6ff;
+}
+:root[data-theme='light'] {
+  --sl-color-accent-low: #e8e7ff;
+  --sl-color-accent: #362dff;
+  --sl-color-accent-high: #05006c;
+}
+h1, h2, h3, h4, .site-title, .sl-link-card .title {
+  font-family: Archivo, system-ui, sans-serif;
+}
+.sl-markdown-content img {
+  border-radius: 8px;
+  border: 1px solid var(--sl-color-gray-5);
+}
+/* Keeps page bottoms clear of the assistant's launcher button */
+.content-panel:last-child {
+  padding-bottom: 5rem;
+}

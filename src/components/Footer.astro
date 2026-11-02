@@ -1,0 +1,19 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro';
+---
+<Default><slot /></Default>
+<adc-ask
+  collection="adc_docs"
+  subtitle="Answers from the ADC docs"
+  placeholder="Ask about any widget"
+  welcome="Ask how to set up or use an ADC widget."
+></adc-ask>
+<script>
+  import '@arielladigitalconsulting/adc-ask';
+
+  // Keeps the assistant on the theme chosen in the site's switcher
+  const root = document.documentElement;
+  const syncTheme = () => document.querySelector('adc-ask')?.setAttribute('theme', root.dataset.theme || 'light');
+  syncTheme();
+  new MutationObserver(syncTheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+</script>
