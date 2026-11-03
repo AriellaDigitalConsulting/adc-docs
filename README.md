@@ -11,7 +11,8 @@ npm run build
 
 The content was migrated once from LumApps with `scripts/import.mjs`. Rerunning it overwrites manual edits.
 
-The assistant is `@arielladigitalconsulting/adc-ask`, currently installed from `vendor/` so builds need no registry
+The header search (`<adc-search>`, searching ADC and LumApps docs) and the assistant (`<adc-ask>`) come from
+`@arielladigitalconsulting/adc-ask`, currently installed from `vendor/` so builds need no registry
 token. To use GitHub Packages, allow this repository under the package's Manage Actions access settings, then install
 the published version.
 

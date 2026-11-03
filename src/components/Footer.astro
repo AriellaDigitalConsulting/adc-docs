@@ -11,9 +11,10 @@ import Default from '@astrojs/starlight/components/Footer.astro';
 <script>
   import '@arielladigitalconsulting/adc-ask';
 
-  // Keeps the assistant on the theme chosen in the site's switcher
+  // Keeps the assistant and the search bar on the theme chosen in the site's switcher
   const root = document.documentElement;
-  const syncTheme = () => document.querySelector('adc-ask')?.setAttribute('theme', root.dataset.theme || 'light');
+  const syncTheme = () =>
+    document.querySelectorAll('adc-ask, adc-search').forEach((el) => el.setAttribute('theme', root.dataset.theme || 'light'));
   syncTheme();
   new MutationObserver(syncTheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
 </script>

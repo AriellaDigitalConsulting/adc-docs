@@ -22,7 +22,9 @@ export default defineConfig({
       favicon: '/favicon.svg',
       lastUpdated: true,
       customCss: ['./src/styles/theme.css'],
-      components: { Footer: './src/components/Footer.astro' },
+      // The header search uses the docs search service instead of Pagefind
+      pagefind: false,
+      components: { Footer: './src/components/Footer.astro', Search: './src/components/Search.astro' },
       head: [
         { tag: 'link', attrs: { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap' } },
         ...(base ? [{ tag: 'meta', attrs: { name: 'robots', content: 'noindex' } }] : []),

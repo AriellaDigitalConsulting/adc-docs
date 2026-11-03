@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+
+// Titles from this site replace the ones parsed from the indexed LumApps text
+const titles = Object.fromEntries((await getCollection('docs')).map((page) => [`/${page.id}`, page.data.title]));
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<adc-search
+  placeholder="Search ADC and LumApps docs"
+  link-from="https://docs.adc.dev"
+  link-to={base}
+  data-titles={JSON.stringify(titles)}
+></adc-search>
+<script>
+  import '@arielladigitalconsulting/adc-ask';
+
+  const search = document.querySelector('adc-search');
+  if (search) search.titles = JSON.parse(search.dataset.titles || '{}');
+</script>
+<style>
+  adc-search {
+    flex: 1;
+    --adc-search-width: 32rem;
+    --adc-search-panel-top: var(--sl-nav-height, 4rem);
+  }
+</style>
