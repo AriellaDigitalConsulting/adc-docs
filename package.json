@@ -10,7 +10,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "import": "node scripts/import.mjs"
+    "import": "node scripts/import.mjs",
+    "check": "node scripts/check-pages.mjs"
   },
   "dependencies": {
     "@arielladigitalconsulting/adc-ask": "file:vendor/arielladigitalconsulting-adc-ask-0.2.0.tgz",

@@ -1,0 +1,33 @@
+name: Update the search index
+
+# The docs search and assistant (chatgpt-proxy) answer from a Qdrant index of these pages. This runs the
+# index job, which re-embeds the pages whose file changed and drops the deleted ones. It also runs weekly.
+# The job reads main itself, so a failed or skipped run is caught up by the next one.
+
+on:
+  push:
+    branches: [main]
+    paths: ['src/content/docs/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+# Queue rather than cancel: a cancelled wait would not stop the job it started
+concurrency:
+  group: search-index
+  cancel-in-progress: false
+
+jobs:
+  index:
+    # Skipped until the variables from chatgpt_proxy/terraform/github-index-trigger are set
+    if: vars.GCP_WORKLOAD_IDENTITY_PROVIDER != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_INDEXER_SERVICE_ACCOUNT }}
+      - uses: google-github-actions/setup-gcloud@v2
+      - run: gcloud run jobs execute chatgpt-proxy-index --project healthy-silo-351114 --region us-central1 --wait
