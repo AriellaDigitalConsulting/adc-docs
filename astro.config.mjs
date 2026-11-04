@@ -19,6 +19,7 @@ export default defineConfig({
     starlight({
       title: 'ADC Docs',
       description: 'Documentation for Ariella Digital Consulting widgets and integrations for LumApps.',
+      logo: { src: './src/assets/logo.png', alt: 'ADC Docs Site', replacesTitle: true },
       favicon: '/favicon.svg',
       lastUpdated: true,
       customCss: ['./src/styles/theme.css'],
