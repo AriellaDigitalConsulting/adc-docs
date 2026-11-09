@@ -17,6 +17,16 @@ import Default from '@astrojs/starlight/components/Footer.astro';
   document.querySelectorAll('adc-ask').forEach((el) => document.body.append(el));
 
   // Measurement IDs are public; PUBLIC_GA_ID overrides it (set it empty to disable analytics)
+  // The proxy runs on Cloud Run and scales to zero. Any request starts an instance, even one that answers 404, so ping
+  // the service root on load, on focus and every minute while the page is visible to keep the first question fast.
+  const proxy = 'https://chatgpt-proxy-530008831989.us-central1.run.app/';
+  const wake = () => {
+    if (document.visibilityState === 'visible') fetch(proxy, { mode: 'no-cors', cache: 'no-store' }).catch(() => {});
+  };
+  wake();
+  addEventListener('focus', wake);
+  setInterval(wake, 60_000);
+
   initConsent(import.meta.env.PUBLIC_GA_ID ?? 'G-4Q9C8455PM');
 
   // Keeps the assistant and the search bar on the theme chosen in the site's switcher
