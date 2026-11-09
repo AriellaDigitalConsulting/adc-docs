@@ -16,7 +16,8 @@ import Default from '@astrojs/starlight/components/Footer.astro';
   // contents on every page that has one. Hosting it on the body keeps it above, and clickable.
   document.querySelectorAll('adc-ask').forEach((el) => document.body.append(el));
 
-  initConsent(import.meta.env.PUBLIC_GA_ID);
+  // Measurement IDs are public; PUBLIC_GA_ID overrides it (set it empty to disable analytics)
+  initConsent(import.meta.env.PUBLIC_GA_ID ?? 'G-4Q9C8455PM');
 
   // Keeps the assistant and the search bar on the theme chosen in the site's switcher
   const root = document.documentElement;
