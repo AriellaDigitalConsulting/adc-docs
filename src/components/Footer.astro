@@ -10,6 +10,13 @@ import Default from '@astrojs/starlight/components/Footer.astro';
 ></adc-ask>
 <script>
   import '@arielladigitalconsulting/adc-ask';
+  import { initConsent } from '../scripts/consent';
+
+  // Starlight isolates the main pane in its own stacking context, which puts the launcher under the fixed table of
+  // contents on every page that has one. Hosting it on the body keeps it above, and clickable.
+  document.querySelectorAll('adc-ask').forEach((el) => document.body.append(el));
+
+  initConsent(import.meta.env.PUBLIC_GA_ID);
 
   // Keeps the assistant and the search bar on the theme chosen in the site's switcher
   const root = document.documentElement;
