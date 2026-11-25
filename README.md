@@ -22,3 +22,8 @@ the published version.
 
 The site is served at `docs.adc.dev`: `public/CNAME` pins the custom domain and the deploy workflow builds for the
 root path. The old LumApps site on that domain was replaced by this one.
+
+The `docs.adc.dev` CNAME to `arielladigitalconsulting.github.io` is **proxied through Cloudflare** (orange cloud), so
+TLS is terminated by Cloudflare's `*.adc.dev` certificate rather than by GitHub Pages. `.dev` is HSTS-preloaded, so a
+host with no matching certificate is unreachable over HTTPS; keep the proxy until GitHub has issued its own Pages
+certificate (check `https_certificate` in `GET /repos/AriellaDigitalConsulting/adc-docs/pages`).
