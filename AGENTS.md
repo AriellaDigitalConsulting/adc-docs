@@ -27,3 +27,7 @@ that changed and removes the deleted ones. Results link to `https://docs.adc.dev
 
 `main` deploys the site (`deploy.yml`) and updates the index (`index.yml`). Work on a branch and open a pull
 request; `check.yml` runs the checks on it.
+
+`docs.adc.dev` points at GitHub Pages through a **Cloudflare-proxied** CNAME, so Cloudflare serves the TLS
+certificate. Don't switch the record to DNS-only until GitHub has issued its own certificate for the domain (see
+the README): `.dev` is HSTS-preloaded, so HTTPS would fail for every visitor in the meantime.
