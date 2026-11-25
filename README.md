@@ -20,4 +20,5 @@ The header search (`<adc-search>`, searching ADC and LumApps docs) and the assis
 token. To use GitHub Packages, allow this repository under the package's Manage Actions access settings, then install
 the published version.
 
-To move to `docs.adc.dev`, remove `SITE_URL` and `SITE_BASE` from the deploy workflow, add `public/CNAME`, and change DNS.
+The site is served at `docs.adc.dev`: `public/CNAME` pins the custom domain and the deploy workflow builds for the
+root path. The old LumApps site on that domain was replaced by this one.

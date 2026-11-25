@@ -26,9 +26,6 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run build
-        env:
-          SITE_URL: https://arielladigitalconsulting.github.io
-          SITE_BASE: /adc-docs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
