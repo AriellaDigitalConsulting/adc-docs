@@ -4,7 +4,7 @@ const doc = (slug) => `docs/${slug}`;
 
 export const sidebar = [
   { label: 'Start here', items: [{ label: 'Introduction', link: '/' }, doc('frequently-asked-questions')] },
-  { label: 'Engagement', items: ['advanced-survey', 'guess-word-widget', 'soccer-predictions', 'unanswered-questions-widget', 'community-posts-in-real-time', 'quick-post-widget'].map(doc) },
+  { label: 'Engagement', items: ['games-and-gamification', 'advanced-survey', 'guess-word-widget', 'soccer-predictions', 'unanswered-questions-widget', 'community-posts-in-real-time', 'quick-post-widget'].map(doc) },
   { label: 'Animation', items: ['confetti-widget', 'fireworks-widget', 'holiday-spirit-widget'].map(doc) },
   { label: 'Personalization', items: ['timezone-widget', 'stocks-in-real-time-widget', 'follow-people', 'follow-interest', 'follow-spaces-communities'].map(doc) },
   { label: 'Content & navigation', items: ['page-reader-documentation', 'organization-chart', 'table-of-contents-widget', 'estimated-reading-time', 'back-to-top-widget', 'last-modified-date-widget', 'browser-tab-notifications-widget', 'enhanced-search-filter-widget'].map(doc) },
