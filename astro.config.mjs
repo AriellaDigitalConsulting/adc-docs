@@ -13,7 +13,11 @@ const retired = ['welcome', 'home', 'hello', 'bonjour', 'all-widgets', 'search-l
 export default defineConfig({
   site,
   base: base || undefined,
-  redirects: Object.fromEntries(retired.map((slug) => [`/docs/${slug}`, home])),
+  // /docs was the old LumApps site's landing page; send it to the new home page
+  redirects: {
+    '/docs': home,
+    ...Object.fromEntries(retired.map((slug) => [`/docs/${slug}`, home])),
+  },
   markdown: { rehypePlugins: [[rehypeBase, { base }]] },
   integrations: [
     starlight({
